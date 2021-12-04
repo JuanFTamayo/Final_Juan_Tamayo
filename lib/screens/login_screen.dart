@@ -1,6 +1,7 @@
 import 'package:final_juan_tamayo/components/loader_component.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({ Key? key }) : super(key: key);
@@ -58,13 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  _showGoogleLoginButton() {
+  Widget _showGoogleLoginButton() {
 
      return Row(
       children: <Widget>[
         Expanded(
           child: ElevatedButton.icon(
-            onPressed: (){}, 
+            onPressed: ()=> _loginGoogle(), 
             icon: FaIcon(
               FontAwesomeIcons.google,
               color: Colors.red,
@@ -80,5 +81,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  _loginGoogle() {}
+  void _loginGoogle() async {
+     var googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
+    var user = await googleSignIn.signIn();
+    print(user);
+  }
 }
