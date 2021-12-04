@@ -115,11 +115,11 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     Map<String, dynamic> request = {
-      'email': user?.email,
-      'id': user?.id,
+      'email': user.email,
+      'id': user.id,
       'loginType': 1,
-      'fullName': user?.displayName,
-      'photoURL': user?.photoUrl,
+      'fullName': user.displayName,
+      'photoURL': user.photoUrl,
     };
 
     await _socialLogin(request);
