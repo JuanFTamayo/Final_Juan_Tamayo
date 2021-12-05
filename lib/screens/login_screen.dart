@@ -4,6 +4,7 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:final_juan_tamayo/components/loader_component.dart';
 import 'package:final_juan_tamayo/helpers/constants.dart';
 import 'package:final_juan_tamayo/models/token.dart';
+import 'package:final_juan_tamayo/models/user.dart';
 
 import 'package:final_juan_tamayo/screens/form_screen.dart';
 import 'package:flutter/material.dart';
@@ -162,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.pushReplacement(
       context, 
       MaterialPageRoute(
-        builder: (context) => FormScreen(token: token,)
+        builder: (context) => FormScreen(token: token,user: request)
       )
     );
   }

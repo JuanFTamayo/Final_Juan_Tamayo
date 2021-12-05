@@ -6,11 +6,6 @@ class Token {
   String token = '';
   String expiration = '';
   User user = User(
-    firstName: '', 
-    lastName: '', 
-    
-    document: '', 
-    address: '', 
     imageId: '', 
     imageFullPath: '', 
     userType: 0, 
@@ -19,10 +14,7 @@ class Token {
     id: '', 
     userName: '', 
     email: '', 
-    countryCode: '57',
-    phoneNumber: '', 
     
-    vehiclesCount: 0
   );
 
   Token({required this.token, required this.expiration, required this.user});
