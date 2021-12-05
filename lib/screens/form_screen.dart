@@ -23,6 +23,22 @@ class _FormScreenState extends State<FormScreen> {
   bool _emailShowError = false;
   TextEditingController _emailController = TextEditingController();
 
+  String _theBest = '';
+  String _theBestError = '';
+  bool _theBestShowError = false;
+  TextEditingController _theBestController = TextEditingController();
+
+  String _theWorst = '';
+  String _theWorstError = '';
+  bool _theWorstShowError = false;
+  TextEditingController _theWorstController = TextEditingController();
+
+  String _remarks = '';
+  String _remarksError = '';
+  bool _remarksShowError = false;
+  TextEditingController _remarksController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +53,7 @@ class _FormScreenState extends State<FormScreen> {
             child: Column(
               children: <Widget>[
                 _showEmail(),
+                _showTheBest()
                 
               ],
             ),
@@ -66,6 +83,69 @@ class _FormScreenState extends State<FormScreen> {
         ),
         onChanged: (value) {
           _email = value;
+        },
+      ),
+    );
+  }
+
+  Widget _showTheBest() {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: TextField(
+        controller: _theBestController,
+        decoration: InputDecoration(
+          hintText: 'Ingresa apellidos...',
+          labelText: 'Apellidos',
+          errorText: _theBestShowError ? _theBestError : null,
+          suffixIcon: Icon(Icons.sentiment_satisfied_alt),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10)
+          ),
+        ),
+        onChanged: (value) {
+          _theBest = value;
+        },
+      ),
+    );
+  }
+
+   Widget _showTheWorst() {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: TextField(
+        controller: _theWorstController,
+        decoration: InputDecoration(
+          hintText: 'Ingresa apellidos...',
+          labelText: 'Apellidos',
+          errorText: _theWorstShowError ? _theWorstError : null,
+          suffixIcon: Icon(Icons.sentiment_dissatisfied_outlined),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10)
+          ),
+        ),
+        onChanged: (value) {
+          _theWorst = value;
+        },
+      ),
+    );
+  }
+
+  Widget _showRemarks() {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: TextField(
+        controller: _remarksController,
+        decoration: InputDecoration(
+          hintText: 'Ingresa apellidos...',
+          labelText: 'Apellidos',
+          errorText: _remarksShowError ? _remarksError : null,
+          suffixIcon: Icon(Icons.text_snippet),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10)
+          ),
+        ),
+        onChanged: (value) {
+          _remarks = value;
         },
       ),
     );
