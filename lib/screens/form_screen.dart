@@ -2,6 +2,7 @@ import 'package:final_juan_tamayo/components/loader_component.dart';
 import 'package:final_juan_tamayo/models/token.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class FormScreen extends StatefulWidget {
   final Token token;
@@ -53,7 +54,10 @@ class _FormScreenState extends State<FormScreen> {
             child: Column(
               children: <Widget>[
                 _showEmail(),
-                _showTheBest()
+                _showTheBest(),
+                _showTheWorst(),
+                _showRemarks(),
+                _showRating()
                 
               ],
             ),
@@ -94,8 +98,8 @@ class _FormScreenState extends State<FormScreen> {
       child: TextField(
         controller: _theBestController,
         decoration: InputDecoration(
-          hintText: 'Ingresa apellidos...',
-          labelText: 'Apellidos',
+          hintText: 'Ingresa lo mejor del curso...',
+          labelText: 'Lo mejor',
           errorText: _theBestShowError ? _theBestError : null,
           suffixIcon: Icon(Icons.sentiment_satisfied_alt),
           border: OutlineInputBorder(
@@ -115,8 +119,8 @@ class _FormScreenState extends State<FormScreen> {
       child: TextField(
         controller: _theWorstController,
         decoration: InputDecoration(
-          hintText: 'Ingresa apellidos...',
-          labelText: 'Apellidos',
+          hintText: 'Ingresa lo peor del curso...',
+          labelText: 'Lo peor',
           errorText: _theWorstShowError ? _theWorstError : null,
           suffixIcon: Icon(Icons.sentiment_dissatisfied_outlined),
           border: OutlineInputBorder(
@@ -136,8 +140,8 @@ class _FormScreenState extends State<FormScreen> {
       child: TextField(
         controller: _remarksController,
         decoration: InputDecoration(
-          hintText: 'Ingresa apellidos...',
-          labelText: 'Apellidos',
+          hintText: 'Ingresa comentarios...',
+          labelText: 'Comentarios',
           errorText: _remarksShowError ? _remarksError : null,
           suffixIcon: Icon(Icons.text_snippet),
           border: OutlineInputBorder(
@@ -148,6 +152,29 @@ class _FormScreenState extends State<FormScreen> {
           _remarks = value;
         },
       ),
+    );
+  }
+
+  Widget _showRating() {
+    return Container(
+      child: Column(
+        children: [
+          RatingBar.builder(
+          itemCount: 5,
+          initialRating: 3,
+          itemBuilder: (context, _) => Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
+          onRatingUpdate: (rating) {
+            print(rating);
+          }, 
+          
+          ),
+          Text('Calificacion')
+        ],
+      ),
+      
     );
   }
 }
