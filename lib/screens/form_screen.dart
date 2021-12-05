@@ -6,6 +6,7 @@ import 'package:final_juan_tamayo/components/loader_component.dart';
 import 'package:final_juan_tamayo/helpers/constants.dart';
 import 'package:final_juan_tamayo/models/token.dart';
 import 'package:final_juan_tamayo/models/user.dart';
+import 'package:final_juan_tamayo/screens/login_screen.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -284,6 +285,11 @@ var response= await http.post(url,
     setState(() {
       _loader=true;
     });
+    print('wenas');
+    
+
+    var body= response.body;
+    print(body);
 
     if(response.statusCode >= 400) {
       await showAlertDialog(
@@ -300,13 +306,18 @@ var response= await http.post(url,
     if(response.statusCode >= 200 && response.statusCode <=400) {
       await showAlertDialog(
         context: context,
-        title: 'Error', 
-        message: 'paso melito.',
+        title: 'guardado con exito', 
+        message: body,
         actions: <AlertDialogAction>[
             AlertDialogAction(key: null, label: 'Aceptar'),
         ]
       );    
-      return;
+       Navigator.pushReplacement(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => LoginScreen()
+      )
+    );
     }
   }
 }
